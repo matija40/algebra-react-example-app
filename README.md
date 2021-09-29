@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Algebra - React Example App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an example React application created during Algebra's Frontend developer course to show students how React works.
+
+---
+
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

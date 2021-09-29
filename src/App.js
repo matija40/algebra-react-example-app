@@ -1,21 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import MessageForm from "./components/MessageForm";
+import { useState } from "react";
+import Message from "./components/Message";
 
 function App() {
+  const [messageObject, setMessageObject] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>My Chat App</h1>
+        {messageObject !== null && (
+          <Message
+            isImportant={messageObject.isImportant}
+            message={messageObject.message}
+            title={messageObject.title}
+          />
+        )}
+        <MessageForm onSendMessage={setMessageObject} />
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/dstrekelj"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          My GitHub Profile
         </a>
       </header>
     </div>
