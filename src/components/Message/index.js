@@ -8,22 +8,16 @@ export default function Message({ isImportant, message, title }) {
     return null;
   }
 
-  let className = "message";
-  if (isImportant) className += " message--important";
+  let className = "Message";
+  if (isImportant) className += " Message--important";
 
   return (
     <div className={className}>
-      <div>{title}</div>
-      <div>
-        <UserInfo />
-      </div>
-      <div>
-        <UniqueId />
-      </div>
-      <div>{message}</div>
-      <div>
-        <CurrentDate />
-      </div>
+      <div className="Message__title">{title}</div>
+      <div className="Message__author"><UserInfo /></div>
+      <div className="Message__id"><UniqueId /></div>
+      <div className="Message__text">{message}</div>
+      <div className="Message__date"><CurrentDate /></div>
     </div>
   );
 }

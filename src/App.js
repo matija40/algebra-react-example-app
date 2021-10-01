@@ -23,19 +23,27 @@ function App() {
           {numberElement.value}
         </button>
       )}
-      <header className="App-header">
+      <header className="App__header">
         <h1>My Chat App</h1>
-        {messageObjects.length === 0 && <p>No messages</p>}
-        {messageObjects.map((messageObject, index) =>
-          <Message
-            key={index}
-            isImportant={messageObject.isImportant}
-            message={messageObject.message}
-            title={messageObject.title}
-          />
-        )}
-        <MessageForm onSendMessage={handleSendMessage} />
-        <a
+      </header>
+      <main className="App__main">
+        <div className="App__message-container">
+          {messageObjects.length === 0 && <p>No messages</p>}
+          {messageObjects.map((messageObject, index) =>
+            <Message
+              key={index}
+              isImportant={messageObject.isImportant}
+              message={messageObject.message}
+              title={messageObject.title}
+            />
+          )}
+        </div>
+        <div className="App__message-form">
+          <MessageForm onSendMessage={handleSendMessage} />
+        </div>
+      </main>
+      <footer className="App__footer">
+       <a
           className="App-link"
           href="https://github.com/dstrekelj"
           target="_blank"
@@ -43,7 +51,7 @@ function App() {
         >
           My GitHub Profile
         </a>
-      </header>
+      </footer>
     </div>
   );
 }

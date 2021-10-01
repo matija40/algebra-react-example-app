@@ -4,12 +4,10 @@ import PropTypes from "prop-types";
 export default class Greet extends React.Component {
   render() {
     const { greeting, name, children } = this.props;
+
     return (
       <div>
-        <div>
-          {greeting} {name}!
-        </div>
-        {children}
+        <span>{greeting} {name}</span> {children}
       </div>
     );
   }
