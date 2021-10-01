@@ -1,8 +1,9 @@
 import "./App.css";
 import MessageForm from "./components/MessageForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Message from "./components/Message";
 import { getId } from "./helpers";
+import AppContext from "./contexts/AppContext";
 
 const numbers = [1, 2, 3, 4];
 const numberElements = numbers.map(number =>
@@ -10,6 +11,7 @@ const numberElements = numbers.map(number =>
 );
 
 function App() {
+  const appContext = useContext(AppContext);
   const [messageObjects, setMessageObjects] = useState([]);
 
   const handleSendMessage = (messageObject) => {
@@ -24,7 +26,7 @@ function App() {
         </button>
       )}
       <header className="App__header">
-        <h1>My Chat App</h1>
+        <h1>My Chat App {appContext.language}</h1>
       </header>
       <main className="App__main">
         <div className="App__message-container">

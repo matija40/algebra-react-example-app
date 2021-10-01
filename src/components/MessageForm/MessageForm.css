@@ -10,11 +10,3 @@
   display: block;
   width: 100%;
 }
-.MessageForm__row button {
-  background-color: rgb(8, 8, 8);
-  border: none;
-  color: #fff;
-  padding: 4px;
-  display: block;
-  width: 100%;
-}

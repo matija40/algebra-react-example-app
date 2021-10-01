@@ -4,10 +4,14 @@ import './reset.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppContext from "./contexts/AppContext";
+import { getId } from "./helpers";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppContext.Provider value={{ language: "hr", id: getId() }}>
+      <App />
+    </AppContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
