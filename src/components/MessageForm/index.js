@@ -1,5 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import TextInput from "../TextInput";
+import Checkbox from "../Checkbox";
+import FormButton from "../FormButton";
 import "./MessageForm.css";
 import TextInput from "../TextInput";
 
@@ -10,21 +13,19 @@ export default function MessageForm({ onSendMessage }) {
     title: "",
   });
 
-  const setMessage = (event) => {
-    setState((currentState) => {
-      return { ...currentState, message: event.target.value };
-    });
-  };
+  const handleOnChange = (event) => {
+    let value = undefined;
 
-  const setTitle = (event) => {
-    setState((currentState) => {
-      return { ...currentState, title: event.target.value };
-    });
-  };
+    if (event.target.type === "checkbox") {
+      value = event.target.checked;
+    } else {
+      value = event.target.value;
+    }
 
-  const setIsImportant = (event) => {
-    setState({ ...state, isImportant: event.target.checked });
-  };
+    setState((currentState) => {
+      return { ...currentState, [event.target.name]: value };
+    });
+  }
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -34,30 +35,42 @@ export default function MessageForm({ onSendMessage }) {
   return (
     <form className="MessageForm" onSubmit={sendMessage}>
       <div className="MessageForm__row">
+<<<<<<< HEAD
         <input
           type="text"
 
           placeholder="Title"
+=======
+        <TextInput
+          label={<div>Title:</div>}
+          onChange={handleOnChange}
+          value={state.title}
+          inputProps={{
+            name: "title", id: "title", placeholder: "Title"
+          }}
+>>>>>>> 092e15ab7fb33f9bc609c87ccfb2474db6c3ddad
         />
       </div>
       <div className="MessageForm__row">
-        <input
-          type="text"
-          onChange={setMessage}
+        <TextInput
+          label={<div>Message:</div>}
+          onChange={handleOnChange}
           value={state.message}
-          placeholder="Message"
+          inputProps={{
+            name: "message", id: "message", placeholder: "Message"
+          }}
         />
       </div>
       <div className="MessageForm__row">
-        <label>
-          <input
-            type="checkbox"
-            onChange={setIsImportant}
-            value="isImportant"
-            checked={state.isImportant}
-          />
-          Important
-        </label>
+        <Checkbox
+          label="Important"
+          onChange={handleOnChange}
+          value="isImportant"
+          checked={state.isImportant}
+          inputProps={{
+            name: "isImportant", id: "is-important"
+          }}
+        />
       </div>
       <TextInput
         label={<div>Title:</div>}
@@ -65,7 +78,7 @@ export default function MessageForm({ onSendMessage }) {
         value={state.title}
         inputProps={{ name: "title", id: "title", placeholder: "Title" }} />
       <div className="MessageForm__row">
-        <button type="submit">Send</button>
+        <FormButton type="submit">Send</FormButton>
       </div>
     </form>
   );
